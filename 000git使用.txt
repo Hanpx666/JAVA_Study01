@@ -1,0 +1,107 @@
+https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c
+67b8067c8c017b000/0013743256916071d599b3aed534aaab22a0db6c4e07fd0000
+
+--------------------------------------------------
+1  git config --global user.name "Kilon"  ------------------设置 用户名也就是提交人
+2  git config --global user.email "331734234@qq.com" -------设置 邮箱  表示提交人的
+
+以上是配置git的用户信息
+--------------------------------------------------
+
+3  创建git的版本库  设置一个空的版本库 在一个位置(尽量不要有中文) 创建一个空文件夹
+4  git_repository -------------------------这里创建的是 :
+5  cd D:\everyday\git_repository ----------进入到文件夹 :
+6  pwd （git支持linux命令）----------------确认路径     :
+7  git init  (使用 git init 初始化 版本库)-确认路径后   : 
+
+----------------------------------------------------------------------------------------------------
+8  尽量用类似Notepad++工具编写文档 设置--首选项--新建 根据自己的系统选择编码要使用UTF-8无bom
+
+   新建一个文档后放到 git 的数据仓内(上文新建的那个空文件夹下 或者其 子目录下workplace)。
+
+9  添加文件到  git :  git add git使用.txt
+ 
+10 提交 文件到 git (添加后是需要提交的 两步:添加 提交  注意:每次提交 都需要add)
+   git commit -m "添加一个 git使用.txt 文件"  --------------提交文件 + 文件提交说明
+   
+   （可以一次添加多个文件，只提交一次
+   $ git add file1.txt
+   $ git add file2.txt file3.txt
+   $ git commit -m "add 3 files."
+   ）
+
+11  使用 git log 查看提交版本日志
+    $git log  或者
+	$git log --pretty=oneline
+
+	
+12  在 git 中 用HEAD表示当前的版本，
+    git reset --hard HEAD^ 回退到上一版本 
+	git reset --hard HEAD~100 回退到之前100版本
+	git reset --hard 版本号 可以到制定版本
+
+13  git历史命令日志 git reflog  可以获得版本号
+
+14  git add *  ------------------------添加当前文件夹下的所有文件
+    git commit -m "提交文本说明"   ----提交
+	
+15  git status  --查看当前文件未提交的状态。 这个文件是修改了还是新增的还是删除的等等
+
+16  退出编辑器模式  先将大写开了。然后一直按着esc + 两下Z  就OK了
+
+17  ”git diff HEAD -- git使用.txt “ -------------查看工作区和版本库里最新版本的区别
+
+18 做了添加的 add 命令 可以进行撤销 
+   添加的是啥东西，可以直接进行 add 取消操作
+   git checkout -- git使用.txt
+
+19 本地文件删除   git 也要做删除操作    
+   git rm tjscwj.txt
+   git commit -m "删除tjscwj文件"
+   
+   如果删除错了，那就没提交前 git checkout -- test.txt 取消(这个试验没成功，我都已经把文件删除了，还能恢复么？)
+   
+20 第1步：创建SSH Key。在用户主目录下
+   (C:\Users\Kilon\.ssh 可以在用户主目录里找到.ssh目录，
+   里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，
+   id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。)，
+   
+   看看有没有.ssh目录，如果有，
+   再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，
+   如果已经有了，可直接跳到下一步。如果没有，
+   打开Shell（Windows下打开Git Bash），创建SSH Key：
+
+   $ ssh-keygen -t rsa -C "331734234@qq.com"
+
+   你需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。
+   
+   第2步：登陆GitHub，头像 --setting -- SSH and GPG keys -- NEW SSHKEY -- 输入 title --- 输入 上文生成的文件(id_rsa.pub)内的内容 到 key -- add ssh key
+   
+   (为什么GitHub需要SSH Key呢？因为GitHub需要识别出你推送的提交确实是你推送的，而不是别人冒充的，而Git支持SSH协议，所以，GitHub只要知道了你的公钥，就可以确认只有你自己才能推送。
+    当然，GitHub允许你添加多个Key。假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。
+    最后友情提示，在GitHub上免费托管的Git仓库，任何人都可以看到喔（但只有你自己才能改）。所以，不要把敏感信息放进去。)
+   
+21 使用远程仓库
+    a. https://github.com/ 登录网站 找到 new  repositories  新建远程库
+       创建后会提示，是否新建远程库内容，或者推送本地库，或者导入其他库配置 使用第二个，将本地库推送至远程库
+       …or push an existing repository from the command line
+       git remote add origin(远程仓库名) https://github.com/IamKilon/JavaStudy.git
+       git push -u origin master
+
+    b. 添加到远程库 添加名字为 yuanck
+       Kilon@Kilon-PC MINGW64 /d/everyday/git_repository/workplace (master)
+       $ git remote add yuanck https://github.com/IamKilon/JavaStudy.git
+
+    c. 将本地分支推送至远程库 yuanck
+       Kilon@Kilon-PC MINGW64 /d/everyday/git_repository/workplace (master)
+       $ git push -u yuanck master
+       Username for 'https://github.com': kilon  这里提示输入用户名  IKilon
+       remote: Invalid username or password. 这里提示输入密码        aaa123456aa
+       fatal: Authentication failed for 'https://github.com/IamKilon/JavaStudy.git/'  输入错了就这样
+
+22  克隆远程库(一般是是远程库 也就是 git 网站上创建远程库，然后克隆到本地)
+    在 git网站新建 项目 TESTYUANCKKL 创建后，点开项目，或者网站自动跳转。点击按钮 [Clone or download]
+    cd 	/d/everyday/git_repository/workplace
+	git clone git@github.com:IamKilon/TESTYUANCKKL.git
+	
+	这样就会将git网站内的项目内容 克隆到本机文件夹(workplace)下
