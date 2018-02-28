@@ -102,6 +102,89 @@ https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c
 22  克隆远程库(一般是是远程库 也就是 git 网站上创建远程库，然后克隆到本地)
     在 git网站新建 项目 TESTYUANCKKL 创建后，点开项目，或者网站自动跳转。点击按钮 [Clone or download]
     cd 	/d/everyday/git_repository/workplace
-    git clone git@github.com:IamKilon/TESTYUANCKKL.git
+	git clone git@github.com:IamKilon/TESTYUANCKKL.git
 	
-    这样就会将git网站内的项目内容 克隆到本机文件夹(workplace)下  (虚拟机修改后提交测试)
+	这样就会将git网站内的项目内容 克隆到本机文件夹(workplace)下
+
+23 创建 dev 分支 
+   git checkout -b dev 
+   git checkout命令加上-b参数表示创建并切换，相当于以下两条命令：
+   $ git branch dev
+   $ git checkout dev
+   Switched to branch 'dev'
+   
+   然后，用git branch命令查看当前分支
+   $ git branch
+   * dev
+     master
+   git branch命令会列出所有分支，当前分支前面会标一个*号。
+   然后，我们就可以在dev分支上正常提交，比如对readme.txt做个修改，加上一行：
+   Creating a new branch is quick.
+   测试分支
+   
+   git branch //显示当前分支
+   git checkout fenzhi //切换到分支
+   git merge fenzhi //合并分支到master分支上
+   git branch -d fenzhi //删除分支 fenzhi
+   
+   查看分支：git branch
+
+   创建分支：git branch <name>
+
+   切换分支：git checkout <name>
+
+   创建+切换分支：git checkout -b <name>
+
+   合并某分支到当前分支：git merge <name>
+
+   删除分支：git branch -d <name>
+   
+   示例:
+   git checkout -b fenzhi
+   git branch 
+   修改文件内容
+   git add 文件
+   git commit -m 提交测试
+   git checkout master 切换回原分支
+   查看文件(这时候是没修改状态)
+   git merge fenzhi 合并分支到master 注意此时的使用分支为 master
+   git branch -d fenzhi 删除fenzhi分支
+   git branch 查看分支
+   
+<<<<<<< HEAD
+24 新建分支之后切换回原来分支。又做修改。这样就会产生冲突
+=======
+24 修改新分支
+>>>>>>> xinfenzhi
+ $ git checkout -b xinfenzhi //创建新分支
+ $ git add * //修改文件内容git 添加
+ $ git commit -m 提交新分支内容
+ $ git checkout master //切换回原分支
+ $ git add * 修改文件内容进行添加
+ $ git commit -m 新建分支之后切换回原来分支。又做修改。这样就会产生冲突
+ $ git merge xifenzhi //切换回新分支
+ $ git branch //查看分支
+   * master
+     xinfenzhi
+ $ git merge xinfenzhi//切换回新分支
+ //修改文件
+ $ git status //查看修改内容
+ $ git add * //添加修改内容到git
+ $ git commit -m 将冲突文件进行提交
+ $ git log --graph --pretty=oneline --abbrev-commit  //用带参数的git log也可以看到分支的合并情况：
+	*   38a26f6 (HEAD -> master) 将冲突文件进行提交
+	|\
+	| * f3c96df (xinfenzhi) 提交新分支内容
+	* | 6aa8c21 新建分支之后切换回原来分支。又做修改。这样就会产生冲突
+	|/
+	* 069b18e 分支创建和删除
+	* c8cadbe 测试分支
+	* e9bbb4f 测试fenzhi分支提交
+	* b55f2b0 测试分支
+	* 280a5cd (origin/master, origin/HEAD) 添加000git使用到项目。
+	* 9d816a6 Initial commit
+ $ git branch -d xinfenzhi 删除新分支
+ $ git branch //查看分支
+   * master
+
+25 
