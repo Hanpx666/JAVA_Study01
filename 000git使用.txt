@@ -667,4 +667,5 @@ warning: You appear to have cloned an empty repository.
 
 要像SVN那样变态地控制权限，用Gitolite。
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+xuexilo 
 
